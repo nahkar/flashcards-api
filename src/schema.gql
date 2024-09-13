@@ -22,3 +22,7 @@ type Query {
   users: [User!]!
   user(user_id: String!): User!
 }
+
+type Mutation {
+  createUser(first_name: String!, last_name: String!, age: Float, email: String!): User!
+}

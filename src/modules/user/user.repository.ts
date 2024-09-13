@@ -24,16 +24,16 @@ export class UserRepository {
 	}
 
 	createUser({ first_name, last_name, age, email }: CreateUserArgs) {
-		const valuesToInsert = { first_name, last_name, email };
+		const valuesToInsert: { first_name: string; last_name: string; email: string; age?: number } = {
+			first_name,
+			last_name,
+			email,
+		};
 
-		if (age) {
+		if (age !== undefined) {
 			valuesToInsert['age'] = age;
 		}
 
-		return this.db
-			.insert(schema.user)
-			.values(valuesToInsert)
-			.returning({ user_id: schema.user.user_id })
-			.execute();
+		return this.db.insert(schema.user).values(valuesToInsert).returning().execute();
 	}
 }

@@ -45,7 +45,7 @@ export class UserService {
 	async createUser({ first_name, last_name, age, email }: CreateUserArgs) {
 		try {
 			const raw = await this.userRepository.createUser({ first_name, last_name, age, email });
-			return raw;
+			return raw[0];
 		} catch (error) {
 			throw new BadRequestException(error.message);
 		}
