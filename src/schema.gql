@@ -1,0 +1,24 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type User {
+  user_id: ID!
+  first_name: String!
+  last_name: String!
+  age: Float
+  email: String!
+}
+
+type Card {
+  card_id: ID!
+  word: String!
+  translate: String!
+  user: User!
+}
+
+type Query {
+  cards(userId: String!): [Card!]!
+  users: [User!]!
+  user(user_id: String!): User!
+}
